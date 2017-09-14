@@ -62,6 +62,11 @@ public class Hada {
     public void setPoder(double poder) {
         this.poder = poder;
     }
+
+    @Override
+    public String toString() {
+        return nombre ;
+    }
     
     
 }
