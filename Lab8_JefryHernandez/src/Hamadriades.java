@@ -25,4 +25,8 @@ public class Hamadriades extends Hada{
         this.arbol = arbol;
     }
 
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
 }

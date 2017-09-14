@@ -11,20 +11,10 @@
 public class Salamandra extends Hada {
 
     private int alas;
-    private boolean fenix;
 
-    public Salamandra(int alas, boolean fenix, String nombre, int Altura, int edad, double salud, double poder) {
+    public Salamandra(int alas, String nombre, int Altura, int edad, double salud, double poder) {
         super(nombre, Altura, edad, salud, poder);
         this.alas = alas;
-        this.fenix = fenix;
-    }
-
-    public boolean isFenix() {
-        return fenix;
-    }
-
-    public void setFenix(boolean fenix) {
-        this.fenix = fenix;
     }
 
     public int getAlas() {
@@ -33,6 +23,11 @@ public class Salamandra extends Hada {
 
     public void setAlas(int alas) {
         this.alas = alas;
+    }
+
+    @Override
+    public String toString() {
+        return super.getNombre();
     }
 
 }

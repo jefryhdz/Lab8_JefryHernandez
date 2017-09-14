@@ -25,5 +25,9 @@ public class Silfides extends Hada {
         this.alas = alas;
     }
 
+    @Override
+    public String toString() {
+        return super.getNombre();
+    }
     
 }

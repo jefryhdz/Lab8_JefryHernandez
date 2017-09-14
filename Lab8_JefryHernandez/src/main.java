@@ -1,9 +1,23 @@
+
+import java.io.BufferedWriter;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jefry Hernandez
@@ -29,6 +43,8 @@ public class main extends javax.swing.JFrame {
         jp_lamias = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         sp_lamias = new javax.swing.JSpinner();
+        jLabel7 = new javax.swing.JLabel();
+        js_aletalamia = new javax.swing.JSpinner();
         jp_Hamadriades = new javax.swing.JPanel();
         jp_silfides = new javax.swing.JPanel();
         js_silfides = new javax.swing.JSpinner();
@@ -44,16 +60,27 @@ public class main extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jt_nombre = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        js_altura = new javax.swing.JSpinner();
+        js_edad = new javax.swing.JSpinner();
+        jl_salud = new javax.swing.JLabel();
+        jl_poder = new javax.swing.JLabel();
         jif_hada = new javax.swing.JInternalFrame();
         jButton1 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jLabel9.setText("Branquias");
 
         sp_lamias.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+
+        jLabel7.setText("Aletas");
+
+        js_aletalamia.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
 
         javax.swing.GroupLayout jp_lamiasLayout = new javax.swing.GroupLayout(jp_lamias);
         jp_lamias.setLayout(jp_lamiasLayout);
@@ -61,9 +88,13 @@ public class main extends javax.swing.JFrame {
             jp_lamiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_lamiasLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_lamiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(39, 39, 39)
-                .addComponent(sp_lamias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_lamiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sp_lamias)
+                    .addComponent(js_aletalamia))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jp_lamiasLayout.setVerticalGroup(
@@ -73,7 +104,11 @@ public class main extends javax.swing.JFrame {
                 .addGroup(jp_lamiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sp_lamias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_lamiasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(js_aletalamia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jp_HamadriadesLayout = new javax.swing.GroupLayout(jp_Hamadriades);
@@ -159,9 +194,9 @@ public class main extends javax.swing.JFrame {
 
         jLabel6.setText("Poder");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
+        js_altura.setModel(new javax.swing.SpinnerNumberModel(1, 1, 15, 1));
 
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
+        js_edad.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
 
         jif_hada.setBorder(null);
         jif_hada.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -179,6 +214,42 @@ public class main extends javax.swing.JFrame {
         );
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Funciones");
+
+        jMenuItem1.setText("Abrir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Guardar");
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setText("Guardar como");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem5.setText("About");
+        jMenu1.add(jMenuItem5);
+
+        jMenuItem4.setText("Salir");
+        jMenu1.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,12 +277,15 @@ public class main extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))
                         .addGap(118, 118, 118)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner2)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(js_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(js_edad))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jl_poder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jl_salud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(133, 133, 133))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,24 +310,24 @@ public class main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(js_altura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jl_salud, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jl_poder, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jif_hada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -262,28 +336,123 @@ public class main extends javax.swing.JFrame {
     private void cb_hadasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_hadasItemStateChanged
         if (evt.getStateChange() == 1) {
 
-            nombre = (String) cb_hadas.getSelectedItem();
-            if (nombre.equals("Lamias")) {
+            tipodehada = (String) cb_hadas.getSelectedItem();
+            if (tipodehada.equals("Lamias")) {
+                jl_salud.setText("473");
+                jl_poder.setText("57");
                 jif_hada.setContentPane(jp_lamias);
                 jif_hada.setVisible(true);
                 jif_hada.setVisible(true);
 
-            } else if (nombre.equals("Hamadriades")) {
-                //jif_hada.setContentPane();
-                jif_hada.setContentPane(jp_Hamadriades);                
+            } else if (tipodehada.equals("Hamadriades")) {
+                jl_salud.setText("373");
+                jl_poder.setText("78");
+                jif_hada.setContentPane(jp_Hamadriades);
                 jif_hada.setVisible(true);
-                
-            } else if (nombre.equals("Silfides")) {
+
+            } else if (tipodehada.equals("Silfides")) {
+                jl_salud.setText("563");
+                jl_poder.setText("67");
                 jif_hada.setContentPane(jp_silfides);
                 jif_hada.setVisible(true);
                 jif_hada.setVisible(true);
-            } else if (nombre.equals("Salamandras")) {
+            } else if (tipodehada.equals("Salamandras")) {
+                jl_salud.setText("683");
+                jl_poder.setText("71");
                 jif_hada.setContentPane(jp_salamandra);
                 jif_hada.setVisible(true);
                 jif_hada.setVisible(true);
             }
         }
     }//GEN-LAST:event_cb_hadasItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        tipodehada = (String) cb_hadas.getSelectedItem();
+        if (tipodehada.equals("Lamias")) {
+            String nombre = jt_nombre.getText();
+            int edad = (Integer) js_edad.getValue();
+            int altura = (Integer) js_altura.getValue();
+            int aleta = (Integer) js_aletalamia.getValue();
+            int branquia = (Integer) sp_lamias.getValue();
+            double salud = 475;
+            double poder = 57;
+            Lamias lami = new Lamias(aleta, branquia, nombre, altura, edad, salud, poder);
+            lista.add(lami);
+            jt_nombre.setText("");
+
+        } else if (tipodehada.equals("Hamadriades")) {
+            //jif_hada.setContentPane();
+            String nombre = jt_nombre.getText();
+            int edad = (Integer) js_edad.getValue();
+            int altura = (Integer) js_altura.getValue();
+            double salud = 546;
+            double poder = 78;
+            Hamadriades hama = new Hamadriades(nombre, altura, edad, salud, poder);
+            lista.add(hama);
+            jt_nombre.setText("");
+        } else if (tipodehada.equals("Silfides")) {
+            String nombre = jt_nombre.getText();
+            int edad = (Integer) js_edad.getValue();
+            int altura = (Integer) js_altura.getValue();
+            double salud = 563;
+            double poder = 67;
+            int alas = (Integer) js_silfides.getValue();
+            Silfides silfi = new Silfides(alas, nombre, altura, edad, salud, poder);
+            jt_nombre.setText("");
+        } else if (tipodehada.equals("Salamandras")) {
+            String nombre = jt_nombre.getText();
+            int edad = (Integer) js_edad.getValue();
+            int altura = (Integer) js_altura.getValue();
+            double salud = 683;
+            double poder = 71;
+            int alas = (Integer) sp_salamandra.getValue();
+            Salamandra sala = new Salamandra(alas, nombre, altura, edad, salud, poder);
+            lista.add(sala);
+
+            jt_nombre.setText("");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        jfc.setFileFilter(new FileNameExtensionFilter("cbm", "cbm"));
+        int file = jfc.showOpenDialog(this);
+        if (file == JFileChooser.APPROVE_OPTION) {
+            File f = jfc.getSelectedFile();
+            String path = f.getPath();
+            System.out.println(path);
+        }
+
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo Binario", "cbm");
+        jfc.addChoosableFileFilter(filtro);
+        int seleccion = jfc.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                File fichero = null;
+                System.out.println("fsa");
+                if (jfc.getFileFilter().getDescription().equals("Archivo Binario")) {
+                    fichero = new File(jfc.getSelectedFile().getPath() + ".cbm");
+                    agregar_archivo(fichero);
+                    System.out.println("fas");
+                } else {
+                    fichero = jfc.getSelectedFile();
+                    System.out.println("afsa");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,19 +501,111 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JInternalFrame jif_hada;
+    private javax.swing.JLabel jl_poder;
+    private javax.swing.JLabel jl_salud;
     private javax.swing.JPanel jp_Hamadriades;
     private javax.swing.JPanel jp_lamias;
     private javax.swing.JPanel jp_salamandra;
     private javax.swing.JPanel jp_silfides;
+    private javax.swing.JSpinner js_aletalamia;
+    private javax.swing.JSpinner js_altura;
+    private javax.swing.JSpinner js_edad;
     private javax.swing.JSpinner js_silfides;
     private javax.swing.JTextField jt_nombre;
     private javax.swing.JSpinner sp_lamias;
     private javax.swing.JSpinner sp_salamandra;
     // End of variables declaration//GEN-END:variables
-    String nombre;
+    String tipodehada;
+    ArrayList<Hada> lista = new ArrayList();
+    File f;
+
+    public void agregararchivo(File f1) throws IOException {
+        /*FileWriter fw;
+        BufferedWriter bw;
+         */
+
+        String path = f1.getPath();
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(path, false);
+            bw = new ObjectOutputStream(fw);
+            for (Hada us : lista) {
+                bw.writeObject(us);
+            }
+
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException e) {
+            }
+
+        } catch (IOException e) {
+        }
+
+    }
+
+    public void cargarrarchivo(File f1) {
+
+        String path = f1.getPath();
+        try {
+            lista = new ArrayList();
+            Hada temp = null;
+            if (f.exists()) {
+
+                FileInputStream entrada = new FileInputStream(path);
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
+
+                try {
+
+                    while ((temp = (Hada) objeto.readObject()) != null) {
+                        lista.add(temp);
+                    }
+                } catch (EOFException e) {
+                }
+                objeto.close();
+                entrada.close();
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+
+        }
+    }
+
+    public void agregar_archivo(File f) throws IOException {
+        /*FileWriter fw;
+        BufferedWriter bw;
+         */
+
+        f = new File(f.getPath() + ".cmb");
+        FileOutputStream fw = null;
+        ObjectOutputStream bw = null;
+        try {
+            fw = new FileOutputStream(f, true);
+            bw = new ObjectOutputStream(fw);
+            if (lista.size() > 0) {
+                for (Hada us : lista) {
+                    bw.writeObject(us);
+                }
+            }
+            bw.flush();
+            try {
+                bw.close();
+                fw.close();
+            } catch (IOException e) {
+            }
+
+        } catch (IOException e) {
+        }
+
+    }
 }
