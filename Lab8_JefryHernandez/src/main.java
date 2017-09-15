@@ -441,6 +441,12 @@ public class main extends javax.swing.JFrame {
                         .addGap(79, 79, 79))))
         );
 
+        jprbar1.setString("\n");
+        jprbar1.setStringPainted(true);
+
+        jp2.setString("");
+        jp2.setStringPainted(true);
+
         jButton5.setText("Pelear");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -752,6 +758,8 @@ public class main extends javax.swing.JFrame {
         int file = jfc.showOpenDialog(this);
         if (file == JFileChooser.APPROVE_OPTION) {
             File f = jfc.getSelectedFile();
+            cargarrarchivo(f);
+            System.out.println(lista);
             String path = f.getPath();
             System.out.println(path);
         }
@@ -802,14 +810,15 @@ public class main extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         jd_pelear.pack();
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_hadas.getModel();
-        modelo.addElement(lista.toArray());
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(lista.toArray());
+        jc_hadas.setModel(modelo);
         jd_pelear.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         hada = (Hada) jc_hadas.getSelectedItem();
+        System.out.println(hada);
         if (lista2.size() < 3) {
             lista2.add(hada);
         }
@@ -848,7 +857,8 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        pelea.setVisible(true);
+        pelea.pack();
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -856,7 +866,7 @@ public class main extends javax.swing.JFrame {
         Hada h = lista2.get(0);
         Hada h1 = lista2.get(1);
         peleas p = new peleas(jprbar1, jp2, h, h1);
-        p.run();
+        p.start();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -1002,21 +1012,19 @@ public class main extends javax.swing.JFrame {
         try {
             lista = new ArrayList();
             Hada temp = null;
-            if (f.exists()) {
 
-                FileInputStream entrada = new FileInputStream(path);
-                ObjectInputStream objeto = new ObjectInputStream(entrada);
+            FileInputStream entrada = new FileInputStream(f1);
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
 
-                try {
+            try {
 
-                    while ((temp = (Hada) objeto.readObject()) != null) {
-                        lista.add(temp);
-                    }
-                } catch (EOFException e) {
+                while ((temp = (Hada) objeto.readObject()) != null) {
+                    lista.add(temp);
                 }
-                objeto.close();
-                entrada.close();
+            } catch (EOFException e) {
             }
+            objeto.close();
+            entrada.close();
 
         } catch (IOException | ClassNotFoundException e) {
 

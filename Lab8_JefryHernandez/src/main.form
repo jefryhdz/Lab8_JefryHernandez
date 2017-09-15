@@ -549,8 +549,16 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JProgressBar" name="jprbar1">
+          <Properties>
+            <Property name="string" type="java.lang.String" value="&#xa;"/>
+            <Property name="stringPainted" type="boolean" value="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JProgressBar" name="jp2">
+          <Properties>
+            <Property name="string" type="java.lang.String" value=""/>
+            <Property name="stringPainted" type="boolean" value="true"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>

@@ -61,18 +61,22 @@ public class peleas extends Thread {
     @Override
     public synchronized void start() {
         p1.setMaximum((int) hada.getSalud());
-        p1.setValue((int) hada.getSalud());
+        p1.setValue((int)hada.getSalud());
+        p2.setValue((int)hada2.getSalud());
+        p1.setString((int) hada.getSalud()+"");
         p2.setMaximum((int) hada2.getSalud());
-        p2.setValue((int) hada2.getSalud());
+        p2.setString((int) hada2.getSalud()+"");
+        System.out.println("asfas");
         while (p1.getValue() > 0 && p2.getValue() > 0) {
-            p1.setValue(p2.getValue() - (int)hada.getPoder());
-            hada.setSalud();
+            p1.setString((p2.getValue() - hada.pelea(hada2, hada))+"");
+            System.out.println("asfasfas");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(peleas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            p2.setValue(p1.getValue() - (int)hada2.getPoder());
+            p2.setValue(p1.getValue() - hada2.pelea(hada,hada2));
+            
 
         }
     }
