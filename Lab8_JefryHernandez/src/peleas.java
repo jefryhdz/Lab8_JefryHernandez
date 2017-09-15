@@ -68,14 +68,16 @@ public class peleas extends Thread {
         p2.setString((int) hada2.getSalud()+"");
         System.out.println("asfas");
         while (p1.getValue() > 0 && p2.getValue() > 0) {
-            p1.setString((p2.getValue() - hada.pelea(hada2, hada))+"");
+            p1.setString((p1.getValue() - hada.pelea(hada2, hada))+"");
+            p1.setValue((p1.getValue() - hada.pelea(hada2, hada)));
             System.out.println("asfasfas");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(peleas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            p2.setValue(p1.getValue() - hada2.pelea(hada,hada2));
+            p2.setValue(p2.getValue() - hada2.pelea(hada,hada2));
+            p2.setString(p2.getValue() - hada2.pelea(hada,hada2)+"");
             
 
         }
