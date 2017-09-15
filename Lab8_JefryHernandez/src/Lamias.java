@@ -8,17 +8,17 @@
  *
  * @author Jefry Hernandez
  */
-public class Lamias extends Hada{
+public class Lamias extends Hada {
+
     private int aleta;
     private int branquea;
-    
 
     public Lamias(int aleta, int branquea, String nombre, int Altura, int edad, double salud, double poder) {
         super(nombre, Altura, edad, salud, poder);
         this.aleta = aleta;
         this.branquea = branquea;
-        
-    }   
+
+    }
 
     public int getAleta() {
         return aleta;
@@ -39,6 +39,11 @@ public class Lamias extends Hada{
     @Override
     public String toString() {
         return super.getNombre();
+    }
+
+    @Override
+    public void pelea() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

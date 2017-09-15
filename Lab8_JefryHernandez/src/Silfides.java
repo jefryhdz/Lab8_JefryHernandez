@@ -29,5 +29,10 @@ public class Silfides extends Hada {
     public String toString() {
         return super.getNombre();
     }
+    @Override
+    public void pelea() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

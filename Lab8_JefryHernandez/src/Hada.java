@@ -1,19 +1,27 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jefry Hernandez
  */
-public class Hada {
+public class Hada implements Serializable, pelea {
+
     private String nombre;
     private int Altura;
     private int edad;
     private double salud;
     private double poder;
+    private final long UID = 77L;
+
+    public Hada() {
+    }
+    
 
     public Hada(String nombre, int Altura, int edad, double salud, double poder) {
         this.nombre = nombre;
@@ -65,8 +73,12 @@ public class Hada {
 
     @Override
     public String toString() {
-        return nombre ;
+        return nombre;
     }
-    
-    
+
+    @Override
+    public void pelea() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
