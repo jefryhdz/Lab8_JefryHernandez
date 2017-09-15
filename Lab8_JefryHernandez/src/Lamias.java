@@ -42,8 +42,13 @@ public class Lamias extends Hada {
     }
 
     @Override
-    public void pelea() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int pelea(Hada h, Hada h2) {
+        int pelear = 0;
+        if (h instanceof Salamandra) {
+            pelear = (int) (h2.getPoder() + ((int) h2.getPoder() * 0.42));
+        } else {
+            pelear = (int) h2.getPoder();
+        }
+        return pelear;
     }
-
 }

@@ -34,7 +34,7 @@ public class main extends javax.swing.JFrame {
      */
     public main() {
         initComponents();
-        
+
     }
 
     /**
@@ -88,8 +88,8 @@ public class main extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
         pelea = new javax.swing.JDialog();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jProgressBar2 = new javax.swing.JProgressBar();
+        jprbar1 = new javax.swing.JProgressBar();
+        jp2 = new javax.swing.JProgressBar();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cb_hadas = new javax.swing.JComboBox<>();
@@ -453,10 +453,10 @@ public class main extends javax.swing.JFrame {
         peleaLayout.setHorizontalGroup(
             peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(peleaLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jprbar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(49, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, peleaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -468,8 +468,8 @@ public class main extends javax.swing.JFrame {
             .addGroup(peleaLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(peleaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jp2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jprbar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(72, 72, 72))
@@ -813,8 +813,6 @@ public class main extends javax.swing.JFrame {
         if (lista2.size() < 3) {
             lista2.add(hada);
         }
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cb_hadas1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_hadas1ItemStateChanged
@@ -855,7 +853,10 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        Hada h = lista2.get(0);
+        Hada h1 = lista2.get(1);
+        peleas p = new peleas(jprbar1, jp2, h, h1);
+        p.run();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -937,8 +938,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JComboBox<String> jc_hadas;
     private javax.swing.JDialog jd_pelear;
     private javax.swing.JInternalFrame jif_hada;
@@ -947,10 +946,12 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jl_poder1;
     private javax.swing.JLabel jl_salud;
     private javax.swing.JLabel jl_salud1;
+    private javax.swing.JProgressBar jp2;
     private javax.swing.JPanel jp_Hamadriades;
     private javax.swing.JPanel jp_lamias;
     private javax.swing.JPanel jp_salamandra;
     private javax.swing.JPanel jp_silfides;
+    private javax.swing.JProgressBar jprbar1;
     private javax.swing.JSpinner js_aletalamia;
     private javax.swing.JSpinner js_altura;
     private javax.swing.JSpinner js_altura1;

@@ -9,6 +9,6 @@
  * @author Jefry Hernandez
  */
 public interface pelea {
-    public void pelea();
+    public int pelea(Hada h, Hada h2);
     
 }

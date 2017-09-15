@@ -28,10 +28,17 @@ public class Salamandra extends Hada {
     @Override
     public String toString() {
         return super.getNombre();
-    }@Override
-    public void pelea() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public int pelea(Hada h, Hada h2) {
+        int pelear = 0;
+        if (h instanceof Hamadriades) {
+            pelear = (int) (h2.getPoder() + ((int) h2.getPoder() * 0.37));
+        } else {
+            pelear = (int) h2.getPoder();
+        }
+        return pelear;
+    }
 
 }

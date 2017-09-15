@@ -76,8 +76,9 @@ public class Hada implements Serializable, pelea {
         return nombre;
     }
 
+
     @Override
-    public void pelea() {
+    public int pelea(Hada h, Hada h2) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

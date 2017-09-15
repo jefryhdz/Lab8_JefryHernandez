@@ -8,15 +8,14 @@
  *
  * @author Jefry Hernandez
  */
-public class Hamadriades extends Hada{
+public class Hamadriades extends Hada {
 
-    private int arbol= 173;
+    private int arbol = 173;
 
     public Hamadriades(String nombre, int Altura, int edad, double salud, double poder) {
         super(nombre, Altura, edad, salud, poder);
     }
 
-    
     public int getArbol() {
         return arbol;
     }
@@ -29,9 +28,12 @@ public class Hamadriades extends Hada{
     public String toString() {
         return super.getNombre();
     }
-    @Override
-    public void pelea() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+    public int pelea(Hada h, Hada h2) {
+        int pelear = 0;
+
+        pelear = (int) h2.getPoder();
+
+        return pelear;
+    }
 }
